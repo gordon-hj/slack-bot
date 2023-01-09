@@ -72,8 +72,12 @@ app.post('/interactions', async function (req, res) {
         },
       });
     } else if (name === 'stock') {
-      const stockName = data.values[0]
-      var tickers = await getStockTickers(stockName)
+      const nameOption = data.options.find(e => e.name === 'name')
+      const { value } = nameOption
+
+      var stockName = value
+      var tickers = await getStockTickers(value)
+
       if(tickers.length <= 0) {
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
