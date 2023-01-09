@@ -72,8 +72,6 @@ app.post('/interactions', async function (req, res) {
         },
       });
     } else if (name === 'stock') {
-      console.log(req.body)
-
       const stockName = data.values[0]
       var tickers = await getStockTickers(stockName)
       if(tickers.length <= 0) {
