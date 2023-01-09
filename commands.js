@@ -99,7 +99,7 @@ export const STOCK_COMMAND = {
   options: [
     {
       "type": 3,
-      "name": 'stock_name',
+      "name": 'name',
       "description": '검색할 대상 이름',
       "required": true,
     }
