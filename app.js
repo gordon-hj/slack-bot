@@ -19,6 +19,9 @@ import {
   getStockTickers,
   getStockPriceAndUrI
 } from './stock_price.js';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 // Create an express app
 const app = express();
@@ -69,10 +72,12 @@ app.post('/interactions', async function (req, res) {
         },
       });
     } else if (name === 'stock') {
-      console.log(req.body)
+      const nameOption = data.options.find(e => e.name === 'name')
+      const { value } = nameOption
 
-      const stockName = data.values[0]
-      var tickers = await getStockTickers(stockName)
+      var stockName = value
+      var tickers = await getStockTickers(value)
+
       if(tickers.length <= 0) {
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
