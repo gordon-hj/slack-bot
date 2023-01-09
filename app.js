@@ -19,6 +19,9 @@ import {
   getStockTickers,
   getStockPriceAndUrI
 } from './stock_price.js';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 // Create an express app
 const app = express();
